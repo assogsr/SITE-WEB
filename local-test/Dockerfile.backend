@@ -1,0 +1,10 @@
+FROM python:3.12-slim
+WORKDIR /app
+COPY local-test/requirements-local.txt .
+COPY local-test/wheels/ ./wheels/
+RUN pip install --no-cache-dir --no-index --find-links=./wheels -r requirements-local.txt
+RUN useradd --create-home --uid 10001 gsr && mkdir /settings && chown gsr:gsr /settings
+COPY --chown=gsr:gsr backend/ ./
+COPY --chown=gsr:gsr local-test/entrypoint.py ./
+USER gsr
+CMD ["python", "entrypoint.py"]

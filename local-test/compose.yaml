@@ -1,0 +1,51 @@
+name: gsr-test-local
+services:
+  mongo:
+    image: mongo:7.0.43
+    volumes:
+      - donnees-fictives:/data/db
+    healthcheck:
+      test: ["CMD", "mongosh", "--quiet", "--eval", "db.adminCommand('ping').ok"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+  backend:
+    platform: linux/amd64
+    build:
+      context: ..
+      dockerfile: local-test/Dockerfile.backend
+    environment:
+      MONGO_URL: mongodb://mongo:27017
+      DB_NAME: gsr_test_local_fictif
+      CORS_ORIGINS: http://localhost:3000,http://127.0.0.1:3000,http://localhost:3001,http://127.0.0.1:3001
+      ENABLE_DEMO_SEED: "true"
+      ADMIN_EMAIL: direction@example.test
+      ADMIN_PASSWORD: GsrTestDirection2026!
+      DEMO_PASSWORD: GsrTestEquipe2026!
+    volumes:
+      - secret-local:/settings
+    depends_on:
+      mongo:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8001/api/', timeout=3)"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+  site:
+    build:
+      context: ..
+      dockerfile: local-test/Dockerfile.frontend
+    ports:
+      - "127.0.0.1:${GSR_PORT:-3000}:80"
+    depends_on:
+      backend:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "wget", "-q", "-O", "/dev/null", "http://127.0.0.1/api/"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+volumes:
+  donnees-fictives:
+  secret-local:

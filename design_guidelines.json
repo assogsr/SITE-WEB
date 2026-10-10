@@ -1,0 +1,181 @@
+{
+  "project_name": "GSR — Génération Sécurité Routière",
+  "project_type": "marketing_site",
+  "language": "fr",
+  "brand_identity": {
+    "name": "GSR — Génération Sécurité Routière",
+    "status": "Association loi 1901, auto-école sociale et solidaire du Val-de-Marne",
+    "tagline": "À vos côtés, sur la route de demain.",
+    "logo_instruction": "Utiliser un wordmark texte « GSR » neutre et épuré. Ne pas inventer de logo graphique complexe.",
+    "forbidden_content": [
+      "Formation IA / AI training",
+      "Cartoons ou illustrations enfantines",
+      "Grandes surfaces orange fluo avec texte blanc",
+      "Section témoignages (désactivée/masquée)",
+      "Look start-up générique ou trop froid"
+    ]
+  },
+  "agencies": {
+    "creteil": {
+      "name": "Agence de Créteil",
+      "address": "33 allée de la Toison d'Or, 94000 Créteil",
+      "phone": "09 56 40 84 54",
+      "email": "creteil.gsr@gmail.com"
+    },
+    "bonneuil": {
+      "name": "Agence de Bonneuil-sur-Marne",
+      "address": "2 place des Libertés, 94380 Bonneuil-sur-Marne",
+      "phone": "09 54 98 20 77",
+      "email": "accueil.gsr@gmail.com"
+    }
+  },
+  "pillars": [
+    {
+      "id": "formations",
+      "title": "Formation Permis & Code",
+      "subtitle": "Accompagnement adapté pour réussir son permis en toute confiance",
+      "items": [
+        "Permis B (Boîte manuelle)",
+        "Boîte automatique (78b)",
+        "Code de la route théorique",
+        "Formation accélérée",
+        "Permis AM (BSR)"
+      ]
+    },
+    {
+      "id": "prevention",
+      "title": "Prévention & Sécurité Routière",
+      "subtitle": "Ateliers de sensibilisation et civisme routier en Val-de-Marne",
+      "items": [
+        "Stop aux rodéos sauvages",
+        "Stage de sensibilisation routière",
+        "Balades éducatives en trottinette",
+        "Les jeunes et les dangers de la route",
+        "Circuler en sécurité",
+        "Atelier interactif « Panique à SécuCity »"
+      ]
+    },
+    {
+      "id": "mobilite_solidaire",
+      "title": "Mobilité Solidaire & Insertion",
+      "subtitle": "Lever les freins à la mobilité pour l'accès à l'emploi et l'autonomie",
+      "items": [
+        "Programme « Women Permis »",
+        "Parcours mobilité sur-mesure",
+        "Accompagnement renforcé des jeunes",
+        "Insertion professionnelle & permis"
+      ]
+    }
+  ],
+  "color_palette": {
+    "primary_accent": "#F29A58",
+    "primary_accent_name": "Orange Abricot",
+    "primary_accent_usage": "Pill badges, hover states, CTA borders, subtle highlight dots, icon accents ONLY. Never as massive background blocks with white text.",
+    "colors": {
+      "bleu_nuit": "#25333D",
+      "creme": "#FFF4EA",
+      "blanc": "#FFFFFF",
+      "gris_ardoise": "#53616B",
+      "orange_abricot": "#F29A58"
+    },
+    "surface_strategy": "Sols en Crème #FFF4EA ou Blanc #FFFFFF avec contrastes Bleu Nuit #25333D et typographies en Gris Ardoise #53616B. Orange abricot en touches d'action ciblées."
+  },
+  "image_urls": {
+    "hero_driving_lesson": "https://images.unsplash.com/photo-1516862523118-a3724eb136d7?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1Nzh8MHwxfHNlYXJjaHwxfHxmcmVuY2glMjB5b3VuZyUyMGRyaXZlciUyMGRyaXZpbmclMjBsZXNzb24lMjBpbnN0cnVjdG9yJTIwcm9hZCUyMHNhZmV0eXxlbnwwfHx8fDE3OTE1NTYzMTN8MA&ixlib=rb-4.1.0&q=85",
+    "woman_driving": "https://images.unsplash.com/photo-1527593167147-e9c94a5883e6?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1Nzh8MHwxfHNlYXJjaHwyfHxmcmVuY2glMjB5b3VuZyUyMGRyaXZlciUyMGRyaXZpbmclMjBsZXNzb24lMjBpbnN0cnVjdG9yJTIwcm9hZCUyMHNhZmV0eXxlbnwwfHx8fDE3OTE1NTYzMTN8MA&ixlib=rb-4.1.0&q=85",
+    "instructor_guidance": "https://images.unsplash.com/photo-1667020854803-0305af085242?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxOTB8MHwxfHNlYXJjaHwxfHxjb21tdW5pdHklMjBkcml2aW5nJTIwc2Nob29sJTIwdXJiYW4lMjBtb2JpbGl0eSUyMHNvY2lhbCUyMHN1cHBvcnR8ZW58MHx8fHwxNzkxNTU2MzEzfDA&ixlib=rb-4.1.0&q=85",
+    "scooter_prevention": "https://images.unsplash.com/photo-1778182295955-9fbc87a7053a?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzMzJ8MHwxfHNlYXJjaHwzfHxlbGVjdHJpYyUyMHNjb290ZXIlMjB1cmJhbiUyMHJvYWQlMjBzYWZldHklMjB5b3VuZyUyMHBlb3BsZSUyMGNpdHl8ZW58MHx8fHwxNzkxNTU2MzEzfDA&ixlib=rb-4.1.0&q=85",
+    "urban_cycling_group": "https://images.unsplash.com/photo-1631860995319-c6f47760d2a0?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxOTB8MHwxfHNlYXJjaHw0fHxjb21tdW5pdHklMjBkcml2aW5nJTIwc2Nob29sJTIwdXJiYW4lMjBtb2JpbGl0eSUyMHNvY2lhbCUyMHN1cHBvcnR8ZW58MHx8fHwxNzkxNTU2MzEzfDA&ixlib=rb-4.1.0&q=85",
+    "scooter_workshop": "https://images.unsplash.com/photo-1784808325619-c9f129523111?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzMzJ8MHwxfHNlYXJjaHwyfHxlbGVjdHJpYyUyMHNjb290ZXIlMjB1cmJhbiUyMHJvYWQlMjBzYWZldHklMjB5b3VuZyUyMHBlb3BsZSUyMGNpdHl8ZW58MHx8fHwxNzkxNTU2MzEzfDA&ixlib=rb-4.1.0&q=85"
+  },
+  "proposals": {
+    "selector_page": {
+      "path": "/",
+      "title": "GSR — Choix de la Proposition Visuelle",
+      "subtitle": "Découvrez nos 3 visions créatives pour la page d'accueil de l'association",
+      "layout": "Grid 3 colonnes responsive avec badges de concept, aperçus typographiques et accès direct aux démos."
+    },
+    "proposition_1": {
+      "path": "/proposition-1",
+      "concept_name": "Élégance Institutionnelle & Chaleur Solidaires",
+      "visual_vibe": "Structure éditoriale épurée, équilibre suisse moderne, aplats subtils crème et bleu nuit, mise en page structurée avec typographie affirmée.",
+      "typography": {
+        "heading_font": "Outfit",
+        "body_font": "Plus Jakarta Sans",
+        "weights": "Headings 700/600, Subheadings 500, Body 400"
+      },
+      "hero_treatment": "Asymétrique avec texte fort à gauche sur fond #FFF4EA, visuel principal encadré avec coins adoucis (rounded-2xl) et badge flottant Orange Abricot « Association Loi 1901 ».",
+      "layout_sections": [
+        "1. Sticky Glass Navigation avec Wordmark GSR, liens 3 domaines, sélecteur d'agence & CTA Rendez-vous",
+        "2. Hero Éditorial Asymétrique avec photo naturelle d'apprentissage de la conduite et chiffres clés",
+        "3. Bandeau Institutionnel des 2 Agences (Créteil & Bonneuil-sur-Marne) avec horaires et contacts interactifs",
+        "4. Section 3 Pôles d'Action (Formations, Prévention, Insertion) sous forme de grands panneaux éditoriaux",
+        "5. Zoom Prévention Routière : Focus interactif sur les actions de terrain (Stop aux rodéos, Trottinettes, Panique à SécuCity)",
+        "6. Module Mobilité Solidaire & Women Permis avec témoignage d'accompagnement associatif",
+        "7. Section Actualités du Val-de-Marne & Prochains Ateliers",
+        "8. Modal & Section Prise de Rendez-vous / Contact Rapide avec choix d'agence",
+        "9. Footer Institutionnel complet avec mentions légales et coordonnées"
+      ]
+    },
+    "proposition_2": {
+      "path": "/proposition-2",
+      "concept_name": "Énergie Citoyenne & Dynamisme Humain",
+      "visual_vibe": "Bento Grid vivant, cartes interactives à angles nets, contrastes appuyés Bleu Nuit/Crème, micro-animations réactives et badges dynamiques.",
+      "typography": {
+        "heading_font": "Clash Display",
+        "body_font": "Satoshi",
+        "weights": "Headings 700/600, Body 400/500"
+      },
+      "hero_treatment": "Plein écran immersif avec overlay dégradé sombre léger (black/30), typographie monumentale « À vos côtés, sur la route de demain », pill-badges orange abricot et sélection d'agence rapide.",
+      "layout_sections": [
+        "1. Navigation dynamique avec indicateur de présence dans le Val-de-Marne",
+        "2. Hero Impactant & Humain avec photo grand format et filtres d'accès rapides par besoin (Permis, Stage, Insertion)",
+        "3. Bento Grid Interactif des Formations (Permis B, Boîte Auto, Code, Accéléré, AM) avec détails au survol",
+        "4. Carte Dual-Agency interactive (Créteil vs Bonneuil) avec cartes d'accès, téléphones direct et e-mails",
+        "5. Carrousel/Grid Action Sécurité Routière avec visuels réels (Trottinette, Rodéos, Jeunes)",
+        "6. Focus Engagé : Women Permis & Parcours d'Insertion avec statistiques d'impact local",
+        "7. Actualités & Agenda des événements Val-de-Marne",
+        "8. Formulaire dynamique de prise de RDV / Demande d'information",
+        "9. Footer contemporain avec accès rapide aux 2 agences"
+      ]
+    },
+    "proposition_3": {
+      "path": "/proposition-3",
+      "concept_name": "Sérénité & Inclusivité Mobilité",
+      "visual_vibe": "Douceur organique, espaces de respiration généreux, contours très arrondis (rounded-3xl), palette feutrée avec accents abricot chaleureux, narration apaisante.",
+      "typography": {
+        "heading_font": "Cormorant Garamond",
+        "body_font": "Manrope",
+        "weights": "Headings 600 Serif élégant, Body 400 Sans-serif lisible"
+      },
+      "hero_treatment": "Composition chaleureuse sur fond Crème #FFF4EA, photographie humaine centrale de conduite accompagnée, texte sérif poétique et rassurant.",
+      "layout_sections": [
+        "1. Nav épilée et apaisée avec logo GSR textuel et boutons adoucis",
+        "2. Hero Chaleureux & Humain privilégiant l'écoute et l'accompagnement solidaire",
+        "3. Présentation complète du projet social et solidaire GSR dans le Val-de-Marne",
+        "4. Les Agences de Proximité (Créteil et Bonneuil) présentées comme des lieux d'accueil et d'écoute",
+        "5. Grille aérée des Permis et Code avec badges explicatifs clairs",
+        "6. Pavillon Prévention Sécurité Routière : Sensibilisation et civisme pour tous les âges",
+        "7. Espace Inclusivité & Insertion : Women Permis et Accompagnement des Jeunes",
+        "8. Actualités associatives et engagements citoyens",
+        "9. Modalité simple de Prise de RDV en 3 clics",
+        "10. Footer soigné et chaleureux"
+      ]
+    }
+  },
+  "instructions_to_main_agent": [
+    "Créer le composant de sélection de proposition sur la route '/' permettant de naviguer facilement vers /proposition-1, /proposition-2, /proposition-3.",
+    "S'assurer que chaque proposition /proposition-1, /proposition-2, /proposition-3 utilise ses typographies distinctes (Google Fonts importées), son style d'agrégation et sa structure visuelle.",
+    "Intégrer scrupuleusement les coordonnées des 2 agences (Créteil & Bonneuil-sur-Marne) dans chaque proposition.",
+    "Respecter impérativement la palette imposée : Orange Abricot #F29A58, Bleu Nuit #25333D, Crème #FFF4EA, Blanc #FFFFFF, Gris Ardoise #53616B.",
+    "Ne jamais créer de grands aplats orange avec du texte blanc.",
+    "Utiliser les URLs d'images Unsplash sélectionnées dans la clé 'image_urls'.",
+    "Ajouter systématiquement le data-testid sur tous les boutons, liens, formulaires et éléments interactifs pour les tests e2e."
+  ],
+  "UNIVERSAL GUIDELINES FOR MAIN AGENT": {
+    "data_testid": "Obligatoire sur tous les éléments interactifs et informations clés (ex: data-testid='cta-rdv-creteil').",
+    "responsive": "Totalement fluide et adapté mobile, tablette, desktop.",
+    "glassmorphism": "Utiliser backdrop-blur-md bg-white/80 ou bg-[#25333D]/90 pour les en-têtes fixes.",
+    "typography_imports": "Google Fonts : Outfit, Plus Jakarta Sans, Clash Display/Cabinet Grotesk via CDN/Fontsource, Satoshi/DM Sans, Cormorant Garamond, Manrope."
+  }
+}

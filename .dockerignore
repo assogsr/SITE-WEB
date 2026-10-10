@@ -1,0 +1,9 @@
+**/node_modules
+**/.git
+**/__pycache__
+**/.pytest_cache
+**/.env*
+**/*.log
+**/*.zip
+frontend/build
+memory/test_credentials.md

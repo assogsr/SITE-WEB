@@ -1,0 +1,74 @@
+// Browser regressions against a local, fictitious development instance only.
+const { chromium, request } = require(process.env.GSR_PLAYWRIGHT_MODULE || 'playwright');
+const assert = require('node:assert/strict');
+const crypto = require('node:crypto');
+const fs = require('node:fs');
+const base = process.env.GSR_BROWSER_BASE || 'http://127.0.0.1:3000';
+const apiBase = process.env.GSR_BROWSER_API || 'http://127.0.0.1:8001';
+for (const url of [base, apiBase]) assert.equal(new URL(url).hostname, '127.0.0.1', 'Local test instances only');
+assert(process.env.GSR_TEST_ADMIN_EMAIL && process.env.GSR_TEST_ADMIN_PASSWORD, 'Inject fictitious local credentials; never commit values');
+const output = { checks: [], errors: [] };
+(async () => {
+  const api = await request.newContext({ baseURL: apiBase });
+  const admin = await api.post('/api/auth/login', { data: { email: process.env.GSR_TEST_ADMIN_EMAIL, password: process.env.GSR_TEST_ADMIN_PASSWORD } });
+  assert.equal(admin.status(), 200);
+  const adminHeaders = { Authorization: 'Bearer ' + (await admin.json()).token };
+  const foreign = (await (await api.get('/api/crm/demandes?agency=bonneuil', { headers: adminHeaders })).json())[0];
+  assert(foreign);
+  const browser = await chromium.launch({ executablePath: process.env.GSR_CHROMIUM_BIN || '/usr/bin/chromium', args: ['--no-sandbox'] });
+  for (const width of [1440, 390]) {
+    const creds = { email: 'browser-' + crypto.randomBytes(12).toString('hex') + '@example.com', password: crypto.randomBytes(18).toString('hex') };
+    const created = await api.post('/api/crm/users', { headers: adminHeaders, data: { ...creds, name: 'TEST Navigateur fictif', role: 'responsable', agency: 'creteil' } });
+    assert.equal(created.status(), 201);
+    const user = await created.json();
+    const context = await browser.newContext({ viewport: { width, height: 900 } });
+    await context.route('**/*', route => route.request().url().startsWith(base) || route.request().url().startsWith(apiBase) ? route.continue() : route.abort());
+    await context.addInitScript(() => localStorage.setItem('gsr_token', 'legacy-fictif'));
+    const page = await context.newPage();
+    page.setDefaultTimeout(10000);
+    page.on('pageerror', e => output.errors.push(e.message));
+    await page.clock.install({ time: new Date() });
+    await page.goto(base + '/crm/login', { waitUntil: 'domcontentloaded' });
+    assert.equal(await page.evaluate(() => localStorage.getItem('gsr_token')), null);
+    output.checks.push({ width, name: 'persistent legacy token removed' });
+    async function signIn() {
+      await page.getByTestId('crm-login-email').fill(creds.email);
+      await page.getByTestId('crm-login-password').fill(creds.password);
+      await page.getByTestId('crm-login-submit').click();
+      await page.getByTestId('crm-layout').waitFor();
+    }
+    await signIn();
+    assert(await page.evaluate(() => !!sessionStorage.getItem('gsr_token')));
+    assert.equal(await page.evaluate(() => localStorage.getItem('gsr_token')), null);
+    await page.reload({ waitUntil: 'domcontentloaded' });
+    await page.getByTestId('crm-layout').waitFor();
+    output.checks.push({ width, name: 'session token survives reload without persistent storage' });
+    await page.goto(base + '/crm/prospects/' + foreign.id, { waitUntil: 'domcontentloaded' });
+    await page.getByTestId('crm-prospect-error').waitFor();
+    assert.equal(await page.getByTestId('crm-prospect-detail').count(), 0);
+    assert(!(await page.locator('body').textContent()).includes(foreign.name));
+    output.checks.push({ width, name: 'cross-agency dossier rejected without rendering personal data' });
+    await page.getByTestId('crm-nav-dashboard').click();
+    await page.getByTestId('crm-dashboard').waitFor();
+    const revoked = await api.patch('/api/crm/users/' + user.id, { headers: adminHeaders, data: { revoke_sessions: true } });
+    assert.equal(revoked.status(), 200);
+    await page.clock.fastForward(61000);
+    await page.getByTestId('crm-login-page').waitFor();
+    assert.equal(await page.evaluate(() => sessionStorage.getItem('gsr_token')), null);
+    output.checks.push({ width, name: 'server revocation clears browser session on periodic check' });
+    await signIn();
+    await page.clock.fastForward(8 * 3600 * 1000 + 1000);
+    await page.getByTestId('crm-login-page').waitFor();
+    assert.equal(await page.evaluate(() => sessionStorage.getItem('gsr_token')), null);
+    output.checks.push({ width, name: 'client expiry clears cached CRM and token' });
+    await context.close();
+  }
+  await browser.close();
+  await api.dispose();
+  const html = fs.readFileSync('/workspace/SITE-WEB/frontend/public/index.html', 'utf8');
+  assert(!html.includes('posthog') && !html.includes('emergent-main.js'));
+  output.checks.push({ name: 'unconsented external telemetry removed' });
+  assert.equal(output.errors.length, 0);
+  fs.writeFileSync(process.env.GSR_BROWSER_RESULT || '/workspace/gsr-security/browser-security.json', JSON.stringify(output, null, 2));
+  console.log(JSON.stringify({ checks: output.checks.length, errors: output.errors }, null, 2));
+})().catch(e => { console.error(e.message); process.exitCode = 1; });
