@@ -1,6 +1,6 @@
 # Rapport de sécurité GSR — 10 octobre 2026
 
-Étape exclusivement locale, effectuée sur des données fictives. Aucun accès, changement ou déploiement sur WordPress ou LWS ; aucune publication, aucun commit ni push. Le design, les styles, les images et la navigation ont été conservés. Les adaptations visibles concernent les références de suivi plus longues, les messages d’accès refusé et la fermeture des sessions expirées.
+Étape exclusivement locale, effectuée sur des données fictives. Aucun accès, changement ou déploiement sur WordPress ou LWS ; aucune publication, aucun commit ni push pendant cette étape initiale de sécurité. Le design, les styles, les images et la navigation ont été conservés. Les adaptations visibles concernent les références de suivi plus longues, les messages d’accès refusé et la fermeture des sessions expirées.
 
 ## Vulnérabilités corrigées
 
@@ -39,7 +39,7 @@ Les anciens JWT doivent être remplacés par une nouvelle connexion. Les ancienn
 - `backend/tests/test_security_regressions.py`
 - `tests/security-browser.cjs`
 
-Les scripts de préparation et de démarrage locaux sous `/workspace/gsr-tools` ont également été adaptés ; ils restent hors du code du projet. Le brouillon de configuration cloud a été enregistré (révision 3), sans application ni publication. Le dépôt local possède une branche sans commit : la restauration dans une nouvelle tâche n’est pas démontrée ; les archives conservent le code local.
+Les scripts de préparation et de démarrage locaux sous `/workspace/gsr-tools` ont également été adaptés ; ils restent hors du code du projet. Le brouillon de configuration cloud a été enregistré (révision 3), sans application ni publication. Lors du rapport initial, le dépôt local possédait une branche sans commit ; les archives conservaient le code local. La restauration complète de l’environnement dans une nouvelle tâche reste à valider.
 
 ## Résultats des validations
 
@@ -63,3 +63,7 @@ Les scripts de préparation et de démarrage locaux sous `/workspace/gsr-tools` 
 `GSR_Projet_Securise.zip` contient le code sans dépendances installées, builds, métadonnées Git, caches ni fichier de credentials de démonstration. `security.patch` et `changed-files.json` permettent de revoir les changements ; `before-security.zip` conserve l’état précédent local. Aucun secret de configuration d’exécution n’est inclus dans l’archive sécurisée.
 
 Cette étape est terminée. Toute poursuite attend la validation de l’utilisateur.
+
+## Transfert GitHub autorisé après le rapport initial
+
+Le 10 octobre 2026, l’utilisateur a explicitement autorisé l’envoi du code vers une branche dédiée afin de permettre son téléchargement. La branche `codex/gsr-securite-test-local` contient désormais le projet sécurisé, ce rapport et le dossier `local-test` avec les lanceurs Docker. Aucun déploiement du site ni changement sur WordPress ou LWS n’a été effectué. La visibilité du dépôt n’a pas pu être vérifiée via l’API GitHub. Le paquet de test expose volontairement des comptes fictifs et doit rester utilisé localement. Après intégration au dépôt, le démarrage des trois services et six contrôles navigateur (accueil, contact et connexions avec les quatre rôles) ont été vérifiés avec succès.
